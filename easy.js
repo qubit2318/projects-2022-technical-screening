@@ -32,7 +32,79 @@ var assert = require("assert")
 
 const altNumbers = (numArray) => {
     // TODO: COMPLETE THIS FUNCTION
-    return [];
+
+    const output = [];
+    const positives = [];
+    const negatives = [];
+    let pos = 0;
+    let neg = 0;
+
+    // count the number of positive and negative numbers given
+    let p = 0;
+    let n = 0;
+
+    for (let i = 0; i < numArray.length; i++) {
+        if (numArray[i] >= 0) {
+            pos++;
+            positives[p] = numArray[i];
+            p++;
+        }
+        else {
+            neg++;
+            negatives[n] = numArray[i];
+            n++;
+
+        }
+    }
+
+    p = 0;
+    n = 0;
+
+    // if there are equal numbers of positives and negatives
+    if (pos == neg) {
+        for (let i = 0; i < numArray.length; i++) {
+            if (i % 2 == 0) {
+                output[i] = positives[p];
+                p++;
+            }
+            else {
+                output[i] = negatives[n];
+                n++;
+            }
+
+        }
+    }
+
+    // if there are more positives than negatives
+    if (pos > neg) {
+        for (let i = 0; i <numArray.length; i++) {
+            if (i % 2 == 0) {
+                output[i] = positives[p];
+                p++;
+            }
+            else {
+                output[i] = negatives[n];
+                n++;
+            }
+
+        }
+    }
+
+    // if there are more negatives than positives
+    if (neg > pos) {
+        for (let i = 0; i < numArray.length; i++) {
+            if (i % 2 == 1) {
+                output[i] = positives[p];
+                p++;
+            }
+            else {
+                output[i] = negatives[n];
+                n++;
+            }
+
+        }
+    }
+    return output;
 }
 
 module.exports = { altNumbers } // Do not modify this line
